@@ -12,5 +12,3 @@ spring:
       port: 27017
       host: localhost
       uri: mongodb://localhost:27017/bookingService
-keyId:  ${key}
-secret_Key: ${secretkey}
