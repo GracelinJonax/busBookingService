@@ -8,8 +8,8 @@ import java.util.List;
 
 @Service
 public interface JourneyRepoService {
-    List<Journey> findByBoardingPointAndEndPoint(String BoardingPoint, String EndPoint);
-    Journey findByBoardingPointAndEndPointAndStartTimeAndEndTime(String BoardingPoint, String EndPoint, LocalTime startTime, LocalTime endTime);
+    List<Journey> findByBoardingPointAndEndPoint(String boardingPoint, String endPoint);
+    Journey findByBoardingPointAndEndPointAndStartTimeAndEndTime(String boardingPoint, String endPoint, LocalTime startTime, LocalTime endTime);
 
 
 }

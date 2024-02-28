@@ -30,17 +30,19 @@ public class BookingServiceImpl implements BookingService {
     private final LayoutRepository layoutRepository;
     private final RefundRepository refundRepository;
     private final OffersRepository offersRepository;
+    private final OffersRepoService offersRepoService;
     private final RewardRepository rewardRepository;
     private final RewardRepoService rewardRepoService;
     private final LinksRepository linksRepository;
+    private final LinksRepoService linksRepoService;
     Random random = new Random();
 
     public BookingServiceImpl(JourneyRepository journeyRepository, BusDetailsRepository busDetailsRepository, LayoutRepository layoutRepository,
                               ModelMapper modelMapper, BusDetailsRepoService busDetailsRepoService, JourneyRepoService journeyRepoService,
                               BookingDetailsRepoService bookingDetailsRepoService, PassengersRepository passengersRepository, PassengersRepoService passengersRepoService,
                               UserDetailsRepository userDetailsRepository, BookingDetailsRepository bookingDetailsRepository, PaymentRepository paymentRepository,
-                              PaymentRepoService paymentRepoService, RefundRepository refundRepository, OffersRepository offersRepository,
-                              RewardRepository rewardRepository, RewardRepoService rewardRepoService, LinksRepository linksRepository) {
+                              PaymentRepoService paymentRepoService, RefundRepository refundRepository, OffersRepository offersRepository, OffersRepoService offersRepoService,
+                              RewardRepository rewardRepository, RewardRepoService rewardRepoService, LinksRepository linksRepository, LinksRepoService linksRepoService) {
         this.journeyRepository = journeyRepository;
         this.journeyRepoService = journeyRepoService;
         this.busDetailsRepository = busDetailsRepository;
@@ -56,9 +58,11 @@ public class BookingServiceImpl implements BookingService {
         this.refundRepository = refundRepository;
         this.modelMapper = modelMapper;
         this.offersRepository = offersRepository;
+        this.offersRepoService = offersRepoService;
         this.rewardRepository = rewardRepository;
         this.rewardRepoService = rewardRepoService;
         this.linksRepository = linksRepository;
+        this.linksRepoService = linksRepoService;
     }
 
     @Override
@@ -164,15 +168,15 @@ public class BookingServiceImpl implements BookingService {
         int type = this.random.nextInt(3);
         Offers selectedReward = new Offers();
         if (type == 1)
-            selectedReward = offersRepository.findRandom("code");
+            selectedReward = offersRepoService.findRandom("code");
         if (type == 2)
-            selectedReward = offersRepository.findRandom("cash");
+            selectedReward = offersRepoService.findRandom("cash");
         if (type == 0)
-            selectedReward = offersRepository.findRandom("link");
+            selectedReward = offersRepoService.findRandom("link");
         Reward reward = new Reward();
         reward.setOffers(selectedReward);
         if (type == 0) {
-            Links links = linksRepository.getFirstByPublishIsNot("published");
+            Links links = linksRepoService.getFirstByPublishIsNot("published");
             reward.setLinkId(links.getId());
             links.setPublish("published");
             linksRepository.save(links);
@@ -232,7 +236,7 @@ public class BookingServiceImpl implements BookingService {
         linksRepository.save(links);
         return linksRepository.findAll();
     }
-//rewardRepository.findById(id).ifPresent(reward -> rewardRepository.findById(id).get());
+
     @Override
     public OfferDto getRewardService(Long id) {
         Reward reward = rewardRepository.findById(id).get();
