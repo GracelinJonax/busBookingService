@@ -14,7 +14,7 @@ import java.util.Date;
 @Entity
 @Data
 @EntityListeners(AuditingEntityListener.class)
-public class UserDetails {
+public class UserDetail {
     @Id
     @UuidGenerator
     private String id;

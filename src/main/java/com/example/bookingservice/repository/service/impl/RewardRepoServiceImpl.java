@@ -1,7 +1,7 @@
 package com.example.bookingservice.repository.service.impl;
 
 import com.example.bookingservice.model.Reward;
-import com.example.bookingservice.model.UserDetails;
+import com.example.bookingservice.model.UserDetail;
 import com.example.bookingservice.repository.RewardRepository;
 import com.example.bookingservice.repository.service.RewardRepoService;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ public class RewardRepoServiceImpl implements RewardRepoService {
     }
 
     @Override
-    public List<Reward> findByUserDetails(UserDetails user) {
+    public List<Reward> findByUserDetails(UserDetail user) {
         return rewardRepository.findByUserDetails(user);
     }
 

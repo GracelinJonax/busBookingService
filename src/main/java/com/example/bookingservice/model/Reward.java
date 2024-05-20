@@ -17,7 +17,7 @@ public class Reward {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @ManyToOne
-    private UserDetails userDetails;
+    private UserDetail userDetails;
     @ManyToOne
     Offers offers;
     private String linkId;

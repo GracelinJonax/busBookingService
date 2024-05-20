@@ -132,7 +132,7 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public String saveUserService(UserDetails userDetails) {
+    public String saveUserService(UserDetail userDetails) {
         userDetailsRepository.save(userDetails);
         return "user details are saved";
     }
@@ -164,7 +164,7 @@ public class BookingServiceImpl implements BookingService {
         return rewardDto;
     }
 
-    Reward findReward(UserDetails user) {
+    Reward findReward(UserDetail user) {
         int type = this.random.nextInt(3);
         Offers selectedReward = new Offers();
         if (type == 1)
@@ -256,7 +256,7 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public List<OfferDto> getUserRewardService(String userId) {
-        UserDetails userDetails = userDetailsRepository.findById(userId).get();
+        UserDetail userDetails = userDetailsRepository.findById(userId).get();
         return rewardRepoService.findByUserDetails(userDetails).stream()
                 .map(a -> {
                     OfferDto offer = new OfferDto();

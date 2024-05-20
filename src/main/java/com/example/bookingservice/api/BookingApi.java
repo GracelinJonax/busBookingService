@@ -4,7 +4,7 @@ import com.example.bookingservice.dto.*;
 import com.example.bookingservice.model.BusDetails;
 import com.example.bookingservice.model.Links;
 import com.example.bookingservice.model.Offers;
-import com.example.bookingservice.model.UserDetails;
+import com.example.bookingservice.model.UserDetail;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +14,7 @@ import java.util.List;
 public interface BookingApi {
 
     @PostMapping("/saveUser")
-    ResponseEntity<String> saveUser(@RequestBody UserDetails userDetails);
+    ResponseEntity<String> saveUser(@RequestBody UserDetail userDetails);
 
     @PostMapping("/saveBus")
     ResponseEntity<String> saveBus(@RequestBody BusDto busDto);

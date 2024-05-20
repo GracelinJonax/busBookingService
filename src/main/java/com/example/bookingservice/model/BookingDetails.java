@@ -21,7 +21,7 @@ public class BookingDetails {
     private String id;
     private String busId;
     @ManyToOne
-    UserDetails user;
+    UserDetail user;
     @ManyToOne
     Journey journey;
     private Date travelDate;

@@ -4,7 +4,7 @@ import com.example.bookingservice.dto.*;
 import com.example.bookingservice.model.BusDetails;
 import com.example.bookingservice.model.Links;
 import com.example.bookingservice.model.Offers;
-import com.example.bookingservice.model.UserDetails;
+import com.example.bookingservice.model.UserDetail;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,7 +20,7 @@ public interface BookingService {
 
     String blockSeatService(BlockDto blockDto);
 
-    String saveUserService(UserDetails userDetails);
+    String saveUserService(UserDetail userDetails);
 
     RewardDto makePayment(PaymentDto payment);
 

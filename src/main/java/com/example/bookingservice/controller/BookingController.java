@@ -5,7 +5,7 @@ import com.example.bookingservice.dto.*;
 import com.example.bookingservice.model.BusDetails;
 import com.example.bookingservice.model.Links;
 import com.example.bookingservice.model.Offers;
-import com.example.bookingservice.model.UserDetails;
+import com.example.bookingservice.model.UserDetail;
 import com.example.bookingservice.service.BookingService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,7 +43,7 @@ public class BookingController implements BookingApi {
     }
 
     @Override
-    public ResponseEntity<String> saveUser(UserDetails userDetails) {
+    public ResponseEntity<String> saveUser(UserDetail userDetails) {
         return new ResponseEntity<>(bookingService.saveUserService(userDetails), HttpStatus.OK);
     }
 

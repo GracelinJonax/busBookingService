@@ -12,3 +12,15 @@ spring:
       port: 27017
       host: localhost
       uri: mongodb://localhost:27017/bookingService
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: c932592c30762c76ea5b
+            client-secret: b98c505029fe953010589b5d308a5b4b0ee9ea67
+logging:
+  level:
+    org:
+      springframework:
+        security: TRACE
